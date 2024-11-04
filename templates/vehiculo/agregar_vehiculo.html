@@ -5,18 +5,20 @@
 {% block content %}
     <h2>Agregar Vehículo</h2>
 
-    <!--Alerta-->
-    {% if alert_message %}
-        <div class="alert {% if alert_type == 'success' %}alert-success{% else %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
-            {{ alert_message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+    <!-- Alerta -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
     {% endif %}
 
-    <!--Form-->
+    <!-- Form -->
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}  
-        <button type="submit">Enviar</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 {% endblock %}
