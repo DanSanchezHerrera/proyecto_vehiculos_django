@@ -3,7 +3,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
 from .forms import VehiculoForm
+from .models import Vehiculo
 
 # INICIO DE SESIÓN
 def login_view(request):
@@ -43,7 +46,24 @@ def agregar_vehiculo(request):
         form = VehiculoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index') 
+            context = {
+                'form': VehiculoForm(), 
+                'alert_message': 'El vehículo ha sido agregado correctamente.',
+                'alert_type': 'success'
+            }
+        else:
+            context = {
+                'form': form,
+                'alert_message': 'No se pudo agregar el vehículo. Por favor, verifica los datos ingresados.',
+                'alert_type': 'danger'
+            }
+        return render(request, 'vehiculo/agregar_vehiculo.html', context)
     else:
         form = VehiculoForm()
     return render(request, 'vehiculo/agregar_vehiculo.html', {'form': form})
+
+#LISTAR VEHICULOS
+@login_required
+def listar_vehiculos(request):
+    vehiculos = Vehiculo.objects.all() 
+    return render(request, 'vehiculo/listar_vehiculos.html', {'vehiculos': vehiculos})

@@ -4,6 +4,16 @@
 
 {% block content %}
     <h2>Agregar Vehículo</h2>
+
+    <!--Alerta-->
+    {% if alert_message %}
+        <div class="alert {% if alert_type == 'success' %}alert-success{% else %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
+            {{ alert_message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+
+    <!--Form-->
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}  
