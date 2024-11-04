@@ -20,8 +20,9 @@ db.sqlite3
 # Environment variables
 .env
 
-# Django migrations
-**/migrations/
+# Django migrations (ignora migraciones salvo __init__.py)
+**/migrations/*.py[cod]
+**/migrations/[!__init__].py
 
 # IDEs and editors
 .vscode/
@@ -42,7 +43,3 @@ media/
 
 # Entorno virtual
 entorno_virtual/
-
-# Aplicación vehiculo específica
-vehiculo/migrations/
-vehiculo/__pycache__/
