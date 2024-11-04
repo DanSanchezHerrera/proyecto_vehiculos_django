@@ -30,5 +30,5 @@ La aplicación de vehículos permite a los usuarios autenticados:
 Por favor clonar en tu máquina local :) :
 
 ```bash
-git clone https://github.com/Usuario/proyecto_vehiculos_django.git
+git clone https://github.com/DanSanchezHerrera/proyecto_vehiculos_django
 cd proyecto_vehiculos_django
