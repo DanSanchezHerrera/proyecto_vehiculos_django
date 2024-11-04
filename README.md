@@ -8,8 +8,6 @@ Este proyecto es una aplicación web desarrollada en Django para gestionar un ca
 - [Instalación](#instalación)
 - [Configuración](#configuración)
 - [Ejecución](#ejecución)
-- [Estructura de Archivos](#estructura-de-archivos)
-- [Uso](#uso)
 
 ## Descripción
 
@@ -32,3 +30,33 @@ Por favor clonar en tu máquina local :) :
 ```bash
 git clone https://github.com/DanSanchezHerrera/proyecto_vehiculos_django
 cd proyecto_vehiculos_django
+```
+
+### Crear y Activar el Entorno Virtual
+
+```bash
+# En Windows
+python -m venv entorno_virtual
+entorno_virtual\Scripts\activate
+```
+
+### Instalar Dependencias
+
+```bash
+pip install -r requirements.txt
+```
+## Configuración
+
+### Aplicar Migraciones
+```bash
+python manage.py migrate
+```
+### Crear superusuario
+```bash
+python manage.py createsuperuser
+```
+## Ejecución
+Para ejecutar por favor usar:
+```bash
+python manage.py runserver
+```
